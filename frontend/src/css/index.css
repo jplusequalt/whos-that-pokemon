@@ -1,0 +1,255 @@
+@import url("./Johto.css");
+
+:root {
+  --primary-color: rgb(250, 250, 248);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: none;
+  font-size: 20px;
+  font-family: "Johto", monospace;
+  background: var(--primary-color);
+}
+
+input {
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  border-image: url("../images/textbox.png") 50 / 5;
+  font-family: inherit;
+  font-size: inherit;
+  width: 15rem;
+  height: 2.25rem;
+  padding: 1rem 1rem;
+  outline: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.header {
+  border-bottom: 5px solid black;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: .5rem;
+  margin-bottom: .625rem;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.pokemon-container {
+  width: 43.75rem;
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.pokemon-name {
+  font-size: 1.5rem;
+  width: 20rem;
+  padding: .625rem 1rem;
+  border: 5px solid black;
+  border-image: url("../images/textbox-name.png") 50 / 3;
+}
+
+.sprite {
+  height: 300px;
+  width: 300px;
+}
+
+.guess-container {
+  width: 43.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guesses-remaining {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  width: 20rem;
+  padding: .625rem 1rem;
+  border: 5px solid black;
+  margin-bottom: 1rem;
+  border-image: url("../images/textbox-name-flipped.png") 50 / 3;
+  text-align: right;
+  margin-right: .4rem;
+}
+
+.guess-form {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  width: 43rem;
+  height: 10rem;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  border: 5px solid black;
+  border-image: url("../images/textbox.png") 100 / 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  padding-left: 5rem;
+}
+
+.give-up {
+  display: flex;
+  align-items: center;
+  padding-left: 5rem;
+}
+
+.label {
+  display: flex;
+  gap: 20px;
+}
+
+.select-hide {
+  opacity: 0;
+  max-height: 35px;
+  max-width: 35px;
+}
+
+.select-show {
+  opacity: 100;
+  max-height: 35px;
+  max-width: 35px;
+}
+
+.result {
+  position: fixed;
+  top: 0%;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.result-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 25%;
+  height: 25%;
+  border: 5px solid black;
+  background-color: var(--primary-color);
+  border-image: url("../images/textbox.png") 100 / 7;
+  border-radius: 8px;
+}
+
+@media (max-width: 43.75rem) {
+
+  body {
+    height: 100vh;
+  }
+  
+  .header {
+    padding: .25rem;
+    border-bottom: 3px solid black;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  .game {
+    width: min(20rem, 95%);
+    height: 90vh;
+    overflow-x: hidden;
+    justify-content: space-evenly;
+  }
+
+  .pokemon-container {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: clamp(15rem, 20rem, 95%);
+    height: clamp(15rem, 25rem, 30rem);
+  }
+
+  .pokemon-name {
+    width: clamp(13rem, 16rem, 20rem);
+    font-size: 1rem;
+  }
+
+  .sprite {
+    height: clamp(200px, 250px, 300px);
+    width: clamp(200px, 250px, 300px);
+  }
+
+  .guess-container {
+    width: clamp(15rem, 20rem, 95%);
+  }
+
+  .guesses-remaining {
+    font-size: 1rem;
+    width: clamp(13rem, 16rem, 20rem);
+  }
+
+  .input-container {
+    width: 20rem;
+    border: 3px solid black;
+    border-image: url("../images/textbox.png") 100 / 7;
+    font-size: 1rem;
+  }
+
+  .input-container p {
+    font-size: 1.5rem;
+  }
+
+  .input {
+    padding-left: 1rem;
+  }
+
+  input {
+    width: 13rem;
+    height: 1.5rem;
+    border-image: url("../images/textbox.png") 55 / 5;
+    font-size: 1rem;
+  }
+
+  .give-up {
+    padding-left: 1rem;
+  }
+
+  .select-hide, .select-show {
+    height: 25px;
+    width: 25px;
+  }
+}

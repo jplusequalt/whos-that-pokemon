@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Johto';
+  src: url('./fonts/Johto.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/Johto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./fonts/Johto.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/Johto.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./fonts/Johto.ttf')  format('truetype') /* Safari, Android, iOS */
+  /* There is no SVG version of this font due to support being dropped in SVG 2 */
+}
