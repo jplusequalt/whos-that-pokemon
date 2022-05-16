@@ -1,18 +1,17 @@
 import { React, useEffect, useState } from "react"
+import { CSSTransition } from 'react-transition-group'
 import pokemonService from "./services/pokemon"
 import Pokemon from "./components/Pokemon"
 import Guess from "./components/Guess"
 import Results from "./components/Results"
 import Header from "./components/Header"
 
-const MAX = 151
-const MIN = 1
-
 const App = () => {
 
   const [pokemon, setPokemon] = useState("")
   const [guess, setGuess] = useState("")
   const [guessCount, setGuessCount] = useState(1)
+  const [shake, setShake] = useState(false)
   const [gameActive, setGameActive] = useState(true)
   const [gameResult, setGameResult] = useState(false)
   const [guessSelected, setGuessSelected] = useState(true)
@@ -27,9 +26,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    const num = Math.floor(Math.random() * (MAX - MIN + 1) + MIN)
     pokemonService
-      .getPokemon(num)
+      .getPokemon()
       .then(pokemon => {
         setPokemon(pokemon.name.toUpperCase())
       })
@@ -60,14 +58,21 @@ const App = () => {
     if (guess === pokemon && guessCount < 6) {
       setGameActive(false)
       setGameResult(true)
+      return
     } else if (guessCount >= 6) {
       setGameActive(false)
     }
+
+    setShake(true)
+    setTimeout(() => {
+      setShake(false)
+    }, 200)
   }
 
   const handleSubmit = event => {
     console.log(guessCount)
     event.preventDefault()
+
     setGuessCount(guessCount + 1)
     updateGameState()
   }
@@ -94,7 +99,13 @@ const App = () => {
           }
           <div className="guess-container">
             <div className="guesses-remaining">
-              <p>GUESSES: {7 - guessCount}/6</p>
+              <CSSTransition
+                in={shake}
+                timeout={200}
+                classNames="shake"
+              >
+                <p>GUESSES: {7 - guessCount}/6</p>
+              </CSSTransition>
             </div>
             {
               pokemon !== "" ?
@@ -114,7 +125,7 @@ const App = () => {
             }
             {
               !gameActive ?
-                <Results gameResult={gameResult} />
+                <Results gameResult={gameResult} guesses={guessCount} />
                 : null
             }
           </div>

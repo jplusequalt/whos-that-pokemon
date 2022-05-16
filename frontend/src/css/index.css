@@ -85,6 +85,36 @@ h1 {
   align-items: center;
 }
 
+@keyframes shake {
+  10% {
+    transform: translateX(3%);
+  }
+
+  30% {
+    transform: translateX(-3%);
+  }
+
+  50% {
+    transform: translateX(5%);
+  }
+
+  70% {
+    transform: translateX(-5%);
+  }
+
+  90% {
+    transform: translateX(3%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake-enter {
+  animation: shake 200ms;
+}
+
 .guesses-remaining {
   align-self: flex-end;
   font-size: 1.5rem;
@@ -165,12 +195,23 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  width: 25%;
-  height: 25%;
+  width: 40%;
+  height: 40%;
   border: 5px solid black;
   background-color: var(--primary-color);
   border-image: url("../images/textbox.png") 100 / 7;
   border-radius: 8px;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 43.75rem) {
@@ -178,7 +219,7 @@ h1 {
   body {
     height: 100vh;
   }
-  
+
   .header {
     padding: .25rem;
     border-bottom: 3px solid black;
@@ -248,7 +289,8 @@ h1 {
     padding-left: 1rem;
   }
 
-  .select-hide, .select-show {
+  .select-hide,
+  .select-show {
     height: 25px;
     width: 25px;
   }

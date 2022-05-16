@@ -1,11 +1,14 @@
 import React from "react";
 
-const Results = ({gameResult}) => {
+const Results = ({ gameResult, guesses }) => {
   return (
     <div className="result">
       <div className="result-content">
-        <img src={require("../images/select.png")} className="select-show"></img>
-        <p>SHARE RESULTS</p>
+        <p>
+          {
+            gameResult ? `You won in ${guesses} guesses!` : "You lost!"
+          }
+        </p>
       </div>
     </div>
   )
