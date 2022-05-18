@@ -1,16 +1,16 @@
 import React from "react";
 
 const Guess = (
-  {guess, 
-   handleSubmit, 
-   handleGuess, 
-   guessSelected, 
-   giveSelected, 
-   onGuessClick, 
-   onGiveClick, 
-   getWindowDimensions,
-   gameActive,
-   gameResult
+  { guess,
+    handleSubmit,
+    handleGuess,
+    guessSelected,
+    giveSelected,
+    onGuessClick,
+    onGiveClick,
+    getWindowDimensions,
+    gameActive,
+    gameResult
   }) => {
 
   const { height, width } = getWindowDimensions()
@@ -30,23 +30,23 @@ const Guess = (
                     }
                     {
                       width >= 700 ?
-                        <label>GUESS: </label>
+                        <label className="label-select">GUESS: </label>
                         : null
                     }
                   </div>
-                    <input
-                        type="text"
-                        value={guess}
-                        onChange={handleGuess}
-                    />
+                  <input
+                    type="text"
+                    value={guess}
+                    onChange={handleGuess}
+                  />
                 </div>
                 <div className="give-up" onClick={onGiveClick}>
                   <div className="label" >
-                      {
-                        giveSelected ? <img src={require("../images/select.png")} className="select-show"></img>
+                    {
+                      giveSelected ? <img src={require("../images/select.png")} className="select-show"></img>
                         : <img src={require("../images/select.png")} className="select-hide"></img>
-                      }
-                      <label>GIVE UP</label>
+                    }
+                    <label className="label-select">GIVE UP</label>
                   </div>
                 </div>
               </div>

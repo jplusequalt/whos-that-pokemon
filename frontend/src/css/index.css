@@ -43,6 +43,28 @@ h1 {
   margin-bottom: .625rem;
 }
 
+.header>h1 {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-right: 1rem;
+}
+
+.info {
+  position: absolute;
+  right: 0;
+  padding-right: 1rem;
+}
+
+.info>button {
+  outline: none;
+  background: none;
+  border: none;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.info>button:hover {
+  cursor: pointer;
+}
+
 .game-container {
   display: flex;
   justify-content: center;
@@ -148,6 +170,10 @@ h1 {
   text-align: center;
 }
 
+.label-select:hover {
+  cursor: pointer;
+}
+
 .input {
   display: flex;
   align-items: center;
@@ -194,6 +220,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 20px;
   width: 40%;
   height: 40%;
@@ -212,6 +239,25 @@ h1 {
   100% {
     opacity: 1;
   }
+}
+
+.info-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  width: 40%;
+  height: 40%;
+  border: 5px solid black;
+  background-color: var(--primary-color);
+  border-image: url("../images/textbox.png") 100 / 7;
+  border-radius: 8px;
+  animation: fadeIn .25s;
 }
 
 @media (max-width: 43.75rem) {
@@ -293,5 +339,15 @@ h1 {
   .select-show {
     height: 25px;
     width: 25px;
+  }
+
+  .info-container {
+    width: 85%;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .result-content {
+    width: 90%;
+    font-size: clamp(1rem, 2vw, 1.5rem);
   }
 }

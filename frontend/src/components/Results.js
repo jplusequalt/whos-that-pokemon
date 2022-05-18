@@ -6,7 +6,7 @@ const Results = ({ gameResult, guesses }) => {
       <div className="result-content">
         <p>
           {
-            gameResult ? `You won in ${guesses - 1} guesses!` : "You lost!"
+            gameResult ? `You won on guess: ${guesses - 1}!` : "You lost!"
           }
         </p>
       </div>

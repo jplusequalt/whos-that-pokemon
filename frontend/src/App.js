@@ -5,6 +5,7 @@ import Pokemon from "./components/Pokemon"
 import Guess from "./components/Guess"
 import Results from "./components/Results"
 import Header from "./components/Header"
+import Info from "./components/Info"
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
   const [gameResult, setGameResult] = useState(false)
   const [guessSelected, setGuessSelected] = useState(true)
   const [giveSelected, setGiveSelected] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
 
   const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
@@ -87,9 +89,13 @@ const App = () => {
     setGuessSelected(false)
   }
 
+  const handleShowInfo = event => {
+    setShowInfo(!showInfo)
+  }
+
   return (
     <div>
-      <Header />
+      <Header onSetShowInfo={handleShowInfo} />
       <div className="game-container">
         <div className="game">
           {
@@ -126,6 +132,11 @@ const App = () => {
             {
               !gameActive ?
                 <Results gameResult={gameResult} guesses={guessCount} />
+                : null
+            }
+            {
+              showInfo ?
+                <Info />
                 : null
             }
           </div>
