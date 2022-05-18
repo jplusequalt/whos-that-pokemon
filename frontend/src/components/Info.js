@@ -13,7 +13,17 @@ const Info = () => {
     }
   }, [])
 
-  const timeLeft = `${24 - +today.getHours()}:${60 - +today.getMinutes()}:${60 - today.getSeconds()}`
+  const hoursLeft = 23 - +today.getHours()
+  const minutesLeft = 59 - +today.getMinutes()
+  const secondsLeft = 59 - +today.getSeconds()
+
+  const timeLeft = `${hoursLeft < 10 ?
+    '0' + hoursLeft
+    : hoursLeft}:${minutesLeft < 10 ?
+      '0' + minutesLeft
+      : minutesLeft}:${secondsLeft < 10 ?
+        '0' + secondsLeft
+        : secondsLeft}`
 
   return (
     <div className="info-container">
